@@ -8,7 +8,7 @@ module.exports = io => {
       .sort({ createdAt: -1 })
       .limit(10)
       .then(messages => {
-        client.emit("load all messages", messages.reverse())
+        client.emit("load all messages", messages.reverse());
       });
 
     console.log("new connection");
@@ -31,4 +31,4 @@ module.exports = io => {
         });
     });
   });
-}
+};

@@ -1,6 +1,6 @@
 "use strict";
 
-const Subscriber = require('../models/subscriber');
+const Subscriber = require("../models/subscriber");
 const getSubscriberParams = body => {
   return {
     name: body.name,
@@ -22,7 +22,7 @@ module.exports = {
       });
   },
   indexView: (req, res) => {
-    res.render("subscribers/index")
+    res.render("subscribers/index");
   },
   saveSubscriber: (req, res) => {
     let newSubscriber = new Subscriber({
@@ -42,14 +42,11 @@ module.exports = {
   new: (req, res) => {
     res.render("subscribers/new");
   },
-  new: (req, res) => {
-    res.render("subscribers/new")
-  },
   create: (req, res, next) => {
     let subscriberParams = getSubscriberParams(req.body);
     Subscriber.create(subscriberParams)
       .then(subscriber => {
-        res.locals.redirect = "/subscribers"
+        res.locals.redirect = "/subscribers";
         res.locals.subscriber = subscriber;
         next();
       })
@@ -72,7 +69,7 @@ module.exports = {
       });
   },
   showView: (req, res) => {
-    res.render("subscribers/show")
+    res.render("subscribers/show");
   },
   edit: (req, res, next) => {
     let subscriberId = req.params.id;
@@ -123,4 +120,4 @@ module.exports = {
     if (redirectPath !== undefined) res.redirect(redirectPath);
     else next();
   }
-}
+};

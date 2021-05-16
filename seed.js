@@ -1,62 +1,62 @@
 "use strict";
 
-const mongoose = require('mongoose');
-const Subscriber = require('./models/subscriber');
-const User = require('./models/user');
-const Course = require('./models/course');
+const mongoose = require("mongoose");
+const Subscriber = require("./models/subscriber");
+const User = require("./models/user");
+const Course = require("./models/course");
 
 mongoose.connect("mongodb://localhost/confetti_cuisine",);
 mongoose.Connection;
 
 var users = [
-  {
-    name: {
-      first: "Jon",
-      last: "Wexler"
+    {
+      name: {
+        first: "Jon",
+        last: "Wexler"
+      },
+      email: "jon@jonwexler.com",
+      zipCode: 10016,
+      password: "12345"
     },
-    email: "jon@jonwexler.com",
-    zipCode: 10016,
-    password: "12345"
-  },
-  {
-    name: {
-      first: "Chef",
-      last: "Eggplant"
+    {
+      name: {
+        first: "Chef",
+        last: "Eggplant"
+      },
+      email: "eggplant@recipeapp.com",
+      zipCode: 20331,
+      password: "12345"
     },
-    email: "eggplant@recipeapp.com",
-    zipCode: 20331,
-    password: "12345"
-  },
-  {
-    name: {
-      first: "Professor",
-      last: "Souffle"
+    {
+      name: {
+        first: "Professor",
+        last: "Souffle"
+      },
+      email: "souffle@recipeapp.com",
+      zipCode: 19103,
+      password: "12345"
+    }
+  ],
+  courses = [
+    {
+      title: "Tomato Workshop",
+      description: "Learn to mash, and bash tomatoes red and ripe.",
+      maxStudents: 100,
+      cost: 21
     },
-    email: "souffle@recipeapp.com",
-    zipCode: 19103,
-    password: "12345"
-  }
-],
-courses = [
-  {
-    title: "Tomato Workshop",
-    description: "Learn to mash, and bash tomatoes red and ripe.",
-    maxStudents: 100,
-    cost: 21
-  },
-  {
-    title: "Cookie Control",
-    description: "Learn to make cookies that swwtness to a new level.",
-    maxStudents: 100,
-    cost: 25
-  },
-  {
-    title: "Soup D'Jawn",
-    description: "In this class you learn to make hot goodness on the ground.",
-    maxStudents: 100,
-    cost: 42
-  }
-];
+    {
+      title: "Cookie Control",
+      description: "Learn to make cookies that swwtness to a new level.",
+      maxStudents: 100,
+      cost: 25
+    },
+    {
+      title: "Soup D'Jawn",
+      description: "In this class you learn to make hot goodness on the ground.",
+      maxStudents: 100,
+      cost: 42
+    }
+  ];
 
 let createCourse = (c, resolve) => {
   Course.create({
@@ -132,7 +132,7 @@ let registerUser = (u, resolve) => {
       console.log(`CREATED USER: ${user.fullName}`);
       resolve(user);
     }
-  )
+  );
 };
 
 users.reduce(

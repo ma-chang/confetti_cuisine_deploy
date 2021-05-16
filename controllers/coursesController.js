@@ -1,6 +1,6 @@
 "use strict";
 
-const Course = require('../models/course');
+const Course = require("../models/course");
 const httpStatus = require("http-status-codes");
 const User = require("../models/user");
 const getCourseParams = body => {
@@ -25,10 +25,10 @@ module.exports = {
       });
   },
   indexView: (req, res) => {
-    res.render("courses/index")
+    res.render("courses/index");
   },
   new: (req, res) => {
-    res.render("courses/new")
+    res.render("courses/new");
   },
   create: (req, res, next) => {
     let courseParams = getCourseParams(req.body);
@@ -56,7 +56,7 @@ module.exports = {
       });
   },
   showView: (req, res) => {
-    res.render("courses/show")
+    res.render("courses/show");
   },
   edit: (req, res, next) => {
     let courseId = req.params.id;
@@ -117,12 +117,12 @@ module.exports = {
       errorObject = {
         status: httpStatus.INTERNAL_SERVER_ERROR,
         message: error.message
-      }
+      };
     } else {
       errorObject = {
         status: httpStatus.OK,
         message: "Unknown Error."
-      }
+      };
     }
     res.json(errorObject);
   },
@@ -150,17 +150,17 @@ module.exports = {
           courses: courseId
         }
       })
-      .then(() => {
-        res.locals.success = true;
-        next();
-      })
-      .catch(error => {
-        console.log(error.message);
-        next(error)
-      })
+        .then(() => {
+          res.locals.success = true;
+          next();
+        })
+        .catch(error => {
+          console.log(error.message);
+          next(error);
+        });
     } else {
-      next("User must log in.")
+      next("User must log in.");
     }
   }
 
-}
+};

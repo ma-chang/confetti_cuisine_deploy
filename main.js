@@ -1,17 +1,17 @@
-'use strict';
+"use strict";
 
-const express = require('express');
+const express = require("express");
 const app = express();
 const router = require("./routes/index");
-const mongoose = require('mongoose');
-const methodOverride = require('method-override');
-const layouts = require('express-ejs-layouts');
-const passport = require('passport');
-const expressSession = require('express-session');
-const cookieParser = require('cookie-parser');
-const connectFlash = require('connect-flash');
-const User = require('./models/user');
-const morgan = require('morgan');
+const mongoose = require("mongoose");
+const methodOverride = require("method-override");
+const layouts = require("express-ejs-layouts");
+const passport = require("passport");
+const expressSession = require("express-session");
+const cookieParser = require("cookie-parser");
+const connectFlash = require("connect-flash");
+const User = require("./models/user");
+const morgan = require("morgan");
 
 mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost:27017/confetti_cuisine",
@@ -20,8 +20,8 @@ mongoose.connect(
 
 mongoose.set("useCreateIndex", true);
 
-app.set('view engine', 'ejs');
-app.set('port', process.env.PORT || 3000);
+app.set("view engine", "ejs");
+app.set("port", process.env.PORT || 3000);
 
 app.use(
   express.urlencoded({
@@ -31,7 +31,7 @@ app.use(
 app.use(morgan("combined"));
 app.use(express.json());
 app.use(layouts);
-app.use(express.static('public'));
+app.use(express.static("public"));
 
 app.use(
   methodOverride("_method", {
@@ -66,8 +66,8 @@ app.use((req, res, next) => {
 
 app.use("/", router);
 
-const server = app.listen(app.get('port'), () => {
+const server = app.listen(app.get("port"), () => {
   console.log(`Server running at http://localhost:${app.get("port")}`);
 });
-const io = require('socket.io')(server);
-const chatController = require('./controllers/chatController')(io);
+const io = require("socket.io")(server);
+const chatController = require("./controllers/chatController")(io);

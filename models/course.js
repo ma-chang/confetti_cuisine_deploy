@@ -1,6 +1,6 @@
 "use strict";
 
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const { Schema } = mongoose;
 const courseSchema = new Schema (
   {
@@ -16,12 +16,12 @@ const courseSchema = new Schema (
     maxStudents: {
       type: Number,
       default: 0,
-      min: [0, "Course cannnot have a negative number of students"]
+      min: [0, "Course cannot have a negative number of students"]
     },
     cost: {
       type: Number,
       default: 0,
-      min: [0, "Course cannnot have a negative cost"]
+      min: [0, "Course cannot have a negative cost"]
     }
   },
   {

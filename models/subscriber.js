@@ -1,6 +1,6 @@
 "use strict";
 
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const subscriberSchema = new Schema(
@@ -29,6 +29,6 @@ const subscriberSchema = new Schema(
 
 subscriberSchema.methods.getInfo = function () {
   return `Name: ${this.name} Email: ${this.email} Zip Code: ${this.zipCode}`;
-}
+};
 
 module.exports = mongoose.model("Subscriber", subscriberSchema);

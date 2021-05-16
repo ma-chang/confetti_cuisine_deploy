@@ -1,7 +1,7 @@
 "use strict";
 
-const User = require('../models/user');
-const passport = require('passport');
+const User = require("../models/user");
+const passport = require("passport");
 const getUserParams = body => {
   return {
     name: {
@@ -27,10 +27,10 @@ module.exports = {
       });
   },
   indexView: (req, res) => {
-    res.render("users/index")
+    res.render("users/index");
   },
   new: (req, res) => {
-    res.render("users/new")
+    res.render("users/new");
   },
   create: (req, res, next) => {
     if (req.skip) next();
@@ -66,7 +66,7 @@ module.exports = {
       });
   },
   showView: (req, res) => {
-    res.render("users/show")
+    res.render("users/show");
   },
   edit: (req, res, next) => {
     let userId = req.params.id;
@@ -141,11 +141,11 @@ module.exports = {
     if (!errors.isEmpty()) {
       let messages = error.array().map(e => e.msg);
       req.skip = true;
-      req.flash("error", messages.join(' and '));
-      req.locals.redirect = '/users/new';
+      req.flash("error", messages.join(" and "));
+      req.locals.redirect = "/users/new";
       next();
     } else {
-      console.log('No invalid!');
+      console.log("No invalid!");
       next();
     }
   },
@@ -155,4 +155,4 @@ module.exports = {
     res.locals.redirect = "/";
     next();
   }
-}
+};
