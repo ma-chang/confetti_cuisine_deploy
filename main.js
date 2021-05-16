@@ -11,14 +11,14 @@ const expressSession = require('express-session');
 const cookieParser = require('cookie-parser');
 const connectFlash = require('connect-flash');
 const User = require('./models/user');
+const morgan = require('morgan');
 
 mongoose.connect(
-  "mongodb://localhost:27017/confetti_cuisine",
-  { useNewUrlParser: true }
+  process.env.MONGODB_URI || "mongodb://localhost:27017/confetti_cuisine",
+  { useNewUrlParser: true , useFindAndModify: false }
 );
 
 mongoose.set("useCreateIndex", true);
-mongoose.set("useFindAndModify", true);
 
 app.set('view engine', 'ejs');
 app.set('port', process.env.PORT || 3000);
@@ -28,6 +28,7 @@ app.use(
     extended: false
   })
 );
+app.use(morgan("combined"));
 app.use(express.json());
 app.use(layouts);
 app.use(express.static('public'));
