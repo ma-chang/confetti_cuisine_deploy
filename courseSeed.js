@@ -18,7 +18,7 @@ var courses = [
   },
   {
     title: "Cookie Control",
-    description: "Learn to make cookies that swwtness to a new level.",
+    description: "Learn to make cookies that sweetness to a new level.",
     maxStudents: 100,
     cost: 25
   },
